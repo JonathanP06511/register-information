@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  register-information:
+   build: ../register-information
+   ports:
+     - 4002
+
+  
