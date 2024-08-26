@@ -1,3 +1,5 @@
+require('dotenv').config(); 
+
 const { User } = require('../models');
 const fetch = (...args) =>
     import('node-fetch').then(({ default: fetch }) => fetch(...args));
@@ -5,7 +7,9 @@ const fetch = (...args) =>
 exports.createUser = async (req, res) => {
     const { role, name, lastname, idcard, formattedDate, email, password, phone, address } = req.body;
     try {
-        const response = await fetch(`http://localhost:4003/apiencrypt/${email}/${password}`);
+        const serviceUrl = process.env.EXTERNAL_SERVICE_URL;
+        const response = await fetch(`${serviceUrl}/${email}/${password}`);
+        
         if (response.ok) {
             const data = await response.json();
             const mail = data.mail;
@@ -18,7 +22,7 @@ exports.createUser = async (req, res) => {
                 idcard,
                 birthdate: formattedDate,
                 mail,
-                password: pass,
+                password: pass, 
                 phone,
                 address
             });

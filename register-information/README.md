@@ -14,7 +14,7 @@ This project is a Information API built with Node.js and Express. It uses Swagge
 
 1. Clone this repository to your local machine:
     ```bash
-    git clone <repository URL>
+    git clone https://github.com/JonathanP06511/register-information.git 
     ```
 
 2. Install the dependencies:
